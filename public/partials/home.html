@@ -1,0 +1,48 @@
+<h3>Contatos</h3>
+
+<div>
+	<a href="#/contatos/new" class="btn btn-primary">Novo Contato</a>
+</div>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>Email</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='contato in contatos'>
+      <td><a href="#/contatos/{{contato._id}}">{{contato.nome}}</a></td>
+      <td>{{contato.sobrenome}}</td>
+      <td>{{contato.email}}</td>
+      <td>
+        <a class="aIcon" ng-click="selContato(contato)" href="" title="Excluir"><i class="glyphicon glyphicon-trash"></i></a>
+      </td>
+    </tr>
+    <tr ng-show="contatos == null || contatos.length < 1">
+      <td colspan="7">Nenhum contato encontrado.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="popConfirmDel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Exclusão de Contato</h4>
+      </div>
+      <div class="modal-body">
+        <p>Tem certeza que deseja excluir o contato "{{contato.nome}}"?</p>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" ng-click="delete()">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
